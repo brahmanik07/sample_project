@@ -1,6 +1,6 @@
 let express=require('express');
 let router=express.Router()
-let {users}=require('../models/users');
+let {users}=require("../models/users");
 let bcrypt=require('bcrypt');
 
 //router() is used to connect api with common route
@@ -10,7 +10,7 @@ router.post("/register",async (req,res)=>{
     let newuser=new users(data);
     let result=await newuser.save();
     res.send(result);
-})
+});
 router.post("/login",async (req,res)=>{
     let data=req.body;
     let emailcheck=await users.findOne({emailid:data.emailid})
